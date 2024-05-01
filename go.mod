@@ -1,7 +1,5 @@
 module code-space-backend-api
 
-go 1.21.4
-
 require (
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/gin-gonic/gin v1.9.1
@@ -21,7 +19,7 @@ require (
 	golang.org/x/crypto v0.15.0
 	gopkg.in/gomail.v2 v2.0.0-20160411212932-81ebce5c23df
 	gorm.io/driver/postgres v1.5.4
-	gorm.io/gorm v1.25.5
+	gorm.io/gorm v1.25.10
 )
 
 require (
