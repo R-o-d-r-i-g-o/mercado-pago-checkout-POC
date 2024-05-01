@@ -49,7 +49,7 @@ jobs:
         uses: actions/setup-go@v2
         with:
           go-version: 1.21
-      
+
       - name: tidy golang
         run: |
           go mod tidy
@@ -57,27 +57,3 @@ jobs:
       - name: Build
         run: |
           env GOOS=linux CGO_ENABLED=0 go build -o codespace-backend-api ./cmd/main.go
-
-  analyser:
-    name: Sonarqube Analyser
-    runs-on: ubuntu-latest
-    needs: test
-
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-        with:
-          # Disabling shallow clone is recommended for improving relevancy of reporting
-          fetch-depth: 0
-
-      - name: Download Coverage Reports
-        uses: actions/download-artifact@v2
-        with:
-          name: coverage-artifacts
-          path: .
-
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
