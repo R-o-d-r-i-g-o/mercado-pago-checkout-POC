@@ -21,6 +21,10 @@ jobs:
         with:
           go-version: 1.21
 
+      - name: tidy golang
+        run: |
+          go mod tidy
+
       - name: Run Tests
         run: |
           go test ./... -short -coverprofile=coverage.out && go tool cover -html=coverage.out -o coverage.html
@@ -45,6 +49,10 @@ jobs:
         uses: actions/setup-go@v2
         with:
           go-version: 1.21
+      
+      - name: tidy golang
+        run: |
+          go mod tidy
 
       - name: Build
         run: |
